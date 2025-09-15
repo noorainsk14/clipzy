@@ -69,7 +69,7 @@ callbacks:{
 },
 pages:{
   signIn: "/login",
-  error: "/error"
+  error: "/login"
 },
 session:{
   strategy:"jwt",
