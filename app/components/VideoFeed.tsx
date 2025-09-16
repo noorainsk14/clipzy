@@ -9,8 +9,13 @@ interface VideoFeedProps {
 export default function VideoFeed({ videos }: VideoFeedProps) {
   const videosArray = Array.isArray(videos) ? videos : [videos];
 
+  const containerClass = videosArray.length === 1
+    ? "flex justify-center"
+    : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4";
+
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className={containerClass}>
       {videosArray.map((video) => (
         <Link key={video._id?.toString()} href={`/videos/${video._id}`}>
           <VideoComponent video={video} />
