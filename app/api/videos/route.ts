@@ -45,7 +45,7 @@ export async function POST(request: NextRequest){
       !body.title ||
       !body.description ||
       !body.videoUrl ||
-      !body.thumbnail
+      !body.thumbnailUrl
     ){
       return NextResponse.json(
         {message: "Above fields (title, description, videoUrl, thumbnail) are required"},

@@ -46,7 +46,11 @@ const FileUpload = ({ onSuccess, onProgress, fileType }: FileUploadProps) => {
     setError(null);
 
     try {
-      const authres = await fetch("/api/auth/imagekit-auth");
+      const authres = await fetch("/api/imagekit-auth");
+      if (!authres.ok) {
+  const errorText = await authres.text(); // fallback if not JSON
+  throw new Error(`Auth error: ${errorText}`);
+}
       const auth = await authres.json();
 
       const res = await upload({
